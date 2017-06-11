@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 
-const BASE_URL = 'http://localhost:12345/pgapp';
+const BASE_URL = 'http://ec2-54-200-208-222.us-west-2.compute.amazonaws.com:12345/pgapp';
 
 @Injectable()
 export class DBManagementService {
