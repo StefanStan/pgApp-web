@@ -1,0 +1,22 @@
+<div *ngFor="let key of dbs">
+    {{ key.key  }} -- {{key.value}}
+  <button (click)="startDB(key.key)">Start</button>
+  <button (click)="stopDB(key.key)">Stop</button>
+
+  <div>
+    <button (click)="basebackupDB(key.key)">Create basebackup</button>
+    <label>Basebackup status: {{ key.basebackupStatus }}</label>
+  </div>
+
+  <div>
+    <input [(ngModel)]="key.date" size="24px" placeholder="2017-06-07 18:40:00 EEST">
+    <button (click)="revertDB(key.key)">Revert</button>
+    <label>Revert status: {{ key.revertStatus }}</label>
+  </div>
+
+  <br>
+  <br>
+  <br>
+</div>
+
+<button (click)="getDBs()">Get DBs</button>
