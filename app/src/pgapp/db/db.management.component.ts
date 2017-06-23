@@ -1,5 +1,7 @@
 import {Component} from "@angular/core";
 import {DBManagementService} from "./db.management.service";
+import * as moment from "moment";
+import _date = moment.unitOfTime._date;
 
 @Component({
   selector: "db-management",
@@ -21,9 +23,10 @@ export class DBManagement {
     this.dbManagementService.getDBs((dbNames) => {
       dbNames.forEach((element, index, array) => {
         this.dbManagementService.changeDB(element, "status", (resp) => {
-          this.dbs.push({key: element, value: 'started'});
+          this.dbs.push({key: element, value: 'started', date: new Date()});
         }, (resp) => {
-          this.dbs.push({key: element, value: 'stoped'});
+          this.dbs.push({key: element, value: 'stoped', date: new Date()});
+          console.log(this.dbs);
         })
       });
     }, (y) => {
@@ -32,6 +35,7 @@ export class DBManagement {
   }
 
   public startDB(dbName: string) {
+    console.log(this.dbs[2].date.toString());
     this.dbManagementService.changeDB(dbName, "start", (resp) => {
 
     }, (resp) => {
@@ -57,9 +61,9 @@ export class DBManagement {
     });
 
     this.dbManagementService.basebackupDB(dbName, (resp) => {
-      elem.basebackupStatus = "OK";
+      elem.basebackupStatusTrue = "OK";
     }, (resp) => {
-      elem.basebackupStatus = "NOT OK";
+      elem.basebackupStatusFalse = "NOT OK";
     });
   }
 
@@ -72,10 +76,12 @@ export class DBManagement {
       }
     });
 
-    this.dbManagementService.revertDB(dbName, elem.date, (resp) => {
-      elem.revertStatus = "OK";
+    let _date = elem.date + ":00 EEST";
+
+    this.dbManagementService.revertDB(dbName, _date, (resp) => {
+      elem.revertStatusTrue = "OK";
     }, (resp) => {
-      elem.revertStatus = "NOT OK";
+      elem.revertStatusFalse = "NOT OK";
     });
   }
 }

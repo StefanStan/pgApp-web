@@ -1,0 +1,66 @@
+body {
+  background: lightgray;
+}
+.viewWrapper {
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.dbWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.dbList {
+  flex: 1;
+  margin: 0 1em;
+  padding: 0 3em;
+  border: 1px solid darkslategray;
+}
+
+.dbFooter {
+  margin-top: 3em;
+  align-self: center;
+  flex: 3;
+}
+
+.dbListHeader {
+  display: flex;
+  flex-wrap: wrap;
+}
+.dbListHeader > p {
+  display: block;
+  min-width: 100%;
+  text-align: center;
+}
+
+.dbListHeader > button {
+  margin: 0 auto;
+}
+
+.dbListMid {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+.dbListMid > label {
+  margin-top: 1em;
+}
+
+.dbListFooter {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.dbListFooter > input,
+.dbListFooter > button{
+  min-width:40%;
+  margin: 0 auto;
+}
+
+.dbListFooter > label {
+  text-align: center;
+}
+
+
